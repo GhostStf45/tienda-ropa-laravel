@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MarcasController;
+use App\Http\Controllers\TiposRopaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendedoresController;
 /*
@@ -30,3 +31,11 @@ Route::put('/vendedores/actualizar/{id}',[VendedoresController::class, 'update']
  Route::get('/marcas',[MarcasController::class, 'index'])->name('marcas.list');
  Route::post('/marcas/crear',[MarcasController::class, 'store'])->name('marcas.store');
  Route::get('/marcas/leer/{id}',[MarcasController::class, 'show'])->name('marcas.show');
+ Route::put('/marcas/actualizar/{id}',[MarcasController::class, 'update'])->name('marcas.update');
+ // -------------------------------- ---------------------------------------------------------- //
+ // -------------------------------- Administracion de tipos de ropa -------------------------------- //
+ Route::get('/tiposRopa',[TiposRopaController::class, 'index'])->name('tiposRopa.list');
+ Route::post('/tiposRopa/crear',[TiposRopaController::class, 'store'])->name('tiposRopa.store');
+ Route::get('/tiposRopa/leer/{id}',[TiposRopaController::class, 'show'])->name('tiposRopa.show');
+ Route::put('/tiposRopa/actualizar/{id}',[TiposRopaController::class, 'update'])->name('tiposRopa.update');
+ // -------------------------------- ---------------------------------------------------------- //

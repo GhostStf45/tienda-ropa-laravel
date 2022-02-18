@@ -61,7 +61,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="">Ropa</a>
                             <h6 class="collapse-header">Tipos y marcas:</h6>
-                            <a class="collapse-item" href="">Tipo de ropa</a>
+                            <a class="collapse-item" href="{{ route('tiposRopa.list') }}">Tipo de ropa</a>
                             <a class="collapse-item" href="{{ route('marcas.list') }}">Marca</a>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
 
                 <!-- Nav Item - Tables -->
                 <li class="nav-item active">
-                    <a class="nav-link" href="tables.html">
+                    <a class="nav-link" href="">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Tables</span></a>
                 </li>

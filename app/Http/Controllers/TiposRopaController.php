@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Marca;
+use App\Models\TipoRopa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 
-class MarcasController extends Controller
+class TiposRopaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class MarcasController extends Controller
     public function index()
     {
         //
-        $marcas = Marca::all();
-        return view('marcas.index',['marcas' => $marcas]);
+        $tiposRopa = TipoRopa::all();
+        return view('tipo_ropa.index', ['tiposRopa' => $tiposRopa]);
     }
 
     /**
@@ -40,13 +40,14 @@ class MarcasController extends Controller
     public function store(Request $request)
     {
         //
-         //
-         $validator = Validator::make($request->all(),[
-            'nombre_marca' => 'required',
+        //
+        $validator = Validator::make($request->all(),[
+            'nombre_del_producto' => 'required'
         ]);
 
+        $nombre_del_producto = $request->input('nombre_del_producto');
 
-        $nombre_marca = $request->input('nombre_marca');
+
 
         if($validator->fails()){
 
@@ -54,35 +55,37 @@ class MarcasController extends Controller
 
         }
 
-        $marca = new Marca();
-        $marca->nombre_marca = $nombre_marca;
-        $marca->save();
+        $tipoRopa = new TipoRopa();
+        $tipoRopa->nombre_del_producto = $nombre_del_producto;
 
-        return redirect()->route('marcas.list')->with(['message'=>'Marca creada correctamente']);
+
+        $tipoRopa->save();
+        return redirect()->route('tiposRopa.list')
+                ->with(['message'=>'Tipo de ropa creado correctamente']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Marca  $marca
+     * @param  \App\Models\TipoRopa  $tipoRopa
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         //
-        $marca = Marca::find($id);
-        return view('marcas.edit',[
-            'marca' => $marca
+        $tipoRopa = TipoRopa::find($id);
+        return view('tipo_ropa.edit',[
+            'tipoRopa' => $tipoRopa
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Marca  $marca
+     * @param  \App\Models\TipoRopa  $tipoRopa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Marca $marca)
+    public function edit(TipoRopa $tipoRopa)
     {
         //
     }
@@ -91,40 +94,37 @@ class MarcasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Marca  $marca
+     * @param  \App\Models\TipoRopa  $tipoRopa
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
-        $marca = Marca::find($id);
+        $tipoRopa = TipoRopa::find($id);
         $validator = Validator::make($request->all(),[
-            'nombre_marca' => 'required',
+            'nombre_del_producto' => 'required'
         ]);
 
-        $nombre_marca = $request->input('nombre_marca');
+        $nombre_del_producto = $request->input('nombre_del_producto');
 
+        $tipoRopa->nombre_del_producto = $nombre_del_producto;
         if($validator->fails()){
 
             return Redirect::back()->withErrors($validator);
 
         }
-
-        $marca->nombre_marca = $nombre_marca;
-        $marca->update();
-
-        return redirect()->route('marcas.list')->with(['message'=>'Marca actualizada correctamente']);
-
-
+        $tipoRopa->update();
+        return redirect()->route('tiposRopa.list')
+                ->with(['message'=>'Tipo de ropa actualizado correctamente']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Marca  $marca
+     * @param  \App\Models\TipoRopa  $tipoRopa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Marca $marca)
+    public function destroy(TipoRopa $tipoRopa)
     {
         //
     }
