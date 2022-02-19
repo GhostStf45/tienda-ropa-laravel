@@ -59,7 +59,7 @@
                     </a>
                     <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="">Ropa</a>
+                            <a class="collapse-item" href="{{ route('productos.list') }}">Ropa</a>
                             <h6 class="collapse-header">Tipos y marcas:</h6>
                             <a class="collapse-item" href="{{ route('tiposRopa.list') }}">Tipo de ropa</a>
                             <a class="collapse-item" href="{{ route('marcas.list') }}">Marca</a>

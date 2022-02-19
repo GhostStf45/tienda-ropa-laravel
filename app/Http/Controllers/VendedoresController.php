@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vendedor;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 
 class VendedoresController extends Controller
