@@ -133,7 +133,7 @@ class ProductosController extends Controller
             'tipo_producto' => 'required',
             'marca' => 'required',
             'costo' => 'required|numeric|min:0|not_in:0',
-            'nueva_cantidad' => 'required|integer|min:1',
+            'nueva_cantidad' => 'integer|min:0',
             'descripcion' => 'required'
         ]);
         $codigo_producto = $request->input('codigo_producto');

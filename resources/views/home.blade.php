@@ -73,6 +73,11 @@
                         <i class="fas fa-user-cog"></i>
                         <span>Vendedores</span></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('tiendas.list') }}">
+                        <i class="fas fa-user-cog"></i>
+                        <span>Tiendas</span></a>
+                </li>
 
                 <!-- Nav Item - Tables -->
                 <li class="nav-item active">

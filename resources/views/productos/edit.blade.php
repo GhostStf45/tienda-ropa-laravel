@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label"> Aumentar cantidad </label>
-                        <input type="number" class="form-control" id="costo" name="nueva_cantidad"  @error('nueva_cantidad') is-invalid @enderror />
+                        <input type="number" class="form-control" id="costo" name="nueva_cantidad"  @error('nueva_cantidad') is-invalid @enderror value="0"/>
                         @error('nueva_cantidad')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
