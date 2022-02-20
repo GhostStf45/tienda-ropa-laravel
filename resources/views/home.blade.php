@@ -80,10 +80,10 @@
                 </li>
 
                 <!-- Nav Item - Tables -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('ventas.list') }}">
                         <i class="fas fa-fw fa-table"></i>
-                        <span>Tables</span></a>
+                        <span>Ventas</span></a>
                 </li>
 
                 <!-- Divider -->

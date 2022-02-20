@@ -6,6 +6,8 @@ use App\Http\Controllers\TiendasController;
 use App\Http\Controllers\TiposRopaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendedoresController;
+use App\Http\Controllers\VentasController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,4 +56,9 @@ Route::put('/vendedores/actualizar/{id}',[VendedoresController::class, 'update']
   Route::post('/tiendas/crear',[TiendasController::class, 'store'])->name('tiendas.store');
   Route::get('/tiendas/leer/{id}',[TiendasController::class, 'show'])->name('tiendas.show');
   Route::put('/tiendas/actualizar/{id}',[TiendasController::class, 'update'])->name('tiendas.update');
+  // -------------------------------- ---------------------------------------------------------- //
+  // -------------------------------- Administracion de ventas -------------------------------- //
+  Route::get('/ventas',[VentasController::class, 'index'])->name('ventas.list');
+  Route::post('/ventas/crear',[VentasController::class, 'store'])->name('ventas.store');
+  Route::get('/ventas/leer/producto/{id}',[VentasController::class, 'show'])->name('ventas.show');
   // -------------------------------- ---------------------------------------------------------- //
