@@ -74,7 +74,7 @@
                 <div class="card-body">
                     <div class="row">
 
-                        <form action="{{route('tiendas.store')}}" method="post" class="row">
+                        <form action="{{route('tiendas.store')}}" method="post" class="row" name="form-venta">
                             @csrf <!-- {{ csrf_field() }} -->
                             <div class="mb-3">
                                 <label class="form-label">Codigo del producto</label>
@@ -157,58 +157,66 @@
 </div>
 <script type="text/javascript">
 
-var precio_compra = parseFloat($('#precio_compra').val());
-var stock_actual = parseInt($('.cantidad_elegida').val());
-var stock_producto;
-$('.amt').keyup(function() {
-    var importe_total = 0
-    var precio_venta =parseFloat($('#precio_venta').val());
-    var cantidad = parseInt($('#cantidad_vender').val());
-    var total;
-        if ( $.isNumeric( $(this).val() ) ){
-            if(precio_venta <= precio_compra){
-                $(".mensaje").show();
-
-            }else{
-
-                importe_total = Math.abs(precio_venta - precio_compra) ;
-                $(".mensaje").hide();
-            }
-            console.log(importe_total);
-
-        }
+$(document).ready(function () {
 
 
-        $("#utilidad").val(importe_total);
-});
-$('#codigo_producto').change(function(){
-    var id = $(this).find("option:selected").val();
-        $.ajax({
-                url: "/ventas/leer/producto/"+id,
-                type: "get",
-                dataType: 'json',
-                success: function (data) {
+    $('.amt').keyup(function() {
+        var importe_total = 0
+        var precio_venta =parseFloat($('#precio_venta').val());
+        var precio_compra = parseFloat($('#precio_compra').val());
+        var cantidad = parseInt($('#cantidad_vender').val());
+        var total;
+            if ( $.isNumeric( $(this).val() ) ){
+                console.log(precio_venta);
+                if(precio_venta <= precio_compra){
+                    $(".mensaje").show();
 
-                    $("#precio_compra").val(data.costo);
-                    $("#cantidad_exitente").val(data.cantidad);
+                }else{
 
-                    //console.log(data);
-                    console.log(data.cantidad);
-                    stock_producto = data.cantidad;
-                },
-                error: function (data) {
+                    importe_total = Math.abs(precio_venta - precio_compra) ;
+                    $(".mensaje").hide();
                 }
-        });
+                console.log(importe_total);
 
-});
+            }
 
-$( "#cantidad_vender" ).change(function() {
-    var cantidad = parseInt($(this).val());
-    if(cantidad > stock_producto){
-        $(".mensaje-enviar").show();
-    }else{
-        $(".mensaje-enviar").hide();
-    }
+
+            $("#utilidad").val(importe_total);
+    });
+    var stock_producto;
+    var stock_actual = parseInt($('.cantidad_elegida').val());
+    $('#codigo_producto').change(function(){
+        var id = $(this).find("option:selected").val();
+            $.ajax({
+                    url: "/ventas/leer/producto/"+id,
+                    type: "get",
+                    dataType: 'json',
+                    success: function (data) {
+
+                        $("#precio_compra").val(data.costo);
+                        $("#cantidad_exitente").val(data.cantidad);
+
+                        //console.log(data);
+                        console.log(data.cantidad);
+                        stock_producto = data.cantidad;
+                    },
+                    error: function (data) {
+                    }
+            });
+
+    });
+
+    $( "#cantidad_vender" ).change(function() {
+        var cantidad = parseInt($(this).val());
+        if(cantidad > stock_producto){
+            $(".mensaje-enviar").show();
+        }else{
+            $(".mensaje-enviar").hide();
+        }
+    });
+
+
+
 });
 
 // $('.amt-venta').keyup(function() {
