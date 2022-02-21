@@ -45,6 +45,7 @@
                                     <th>Precio de venta (S/.)</th>
                                     <th>Utilidad (S/.)</th>
                                     <th>Cantidad vendida</th>
+                                    <th>Total vendido (S/.)</th>
                                     <th>Fecha de registro</th>
                                 </tr>
                             </tfoot>
@@ -65,11 +66,23 @@
                                 @endforeach
                             </tbody>
                         </table>
+
                     </div>
+
                 </div>
 
+
+
+
         </div>
+        <!--Pagination-->
+            <div class="mt-3 d-flex align-items-center justify-content-md-center col-md-12">
+
+                {{$ventas->appends(request()->except('page'))->links()}}
+            </div>
+        <!--End pagination-->
     </div>
+
     <div class="col-md-4">
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -88,11 +101,6 @@
                                      @foreach($productos as $producto)
                                      <option value="{{ $producto->id }}">
                                         {{ $producto->codigo_producto }} - {{ $producto->tiposProductos->nombre_del_producto }} - Marca : {{ $producto->marcas->nombre_marca }}
-
-                                        <div class="cantidad_elegida" style="display: none;">{{$producto->cantidad}}</div>
-                                        <div class="precio_elegido" style="display: none;">{{$producto->precio}}</div>
-
-
                                     </option>
                                      @endforeach
                                   </select>
@@ -190,14 +198,28 @@ $(document).ready(function () {
         type: "get",
         dataType: 'json',
         success: function (data) {
-
-            console.log(data);
-
             $.each(data, function(index, value){
                 if(value.cantidad <= 0){
                     $("#codigo_producto option[value="+value.id+"]").hide();
                 }
                 console.log(value.cantidad);
+            });
+        },
+        error: function (data) {
+        }
+    });
+    $.ajax({
+        url: "/ventas/vendedores",
+        type: "get",
+        dataType: 'json',
+        success: function (data) {
+            console.log(data);
+
+            $.each(data, function(index, value){
+                if(value.Estado == 0){
+                    $("#vendedor option[value="+value.id+"]").hide();
+                }
+
             });
         },
         error: function (data) {

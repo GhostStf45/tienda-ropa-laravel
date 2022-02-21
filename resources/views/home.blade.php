@@ -75,14 +75,14 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('tiendas.list') }}">
-                        <i class="fas fa-user-cog"></i>
+                        <i class="fas fas fa-building"></i>
                         <span>Tiendas</span></a>
                 </li>
 
                 <!-- Nav Item - Tables -->
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('ventas.list') }}">
-                        <i class="fas fa-fw fa-table"></i>
+                        <i class="fas fa-briefcase"></i>
                         <span>Ventas</span></a>
                 </li>
 

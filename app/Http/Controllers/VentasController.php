@@ -22,7 +22,7 @@ class VentasController extends Controller
     public function index()
     {
         //
-        $ventas = Venta::all();
+        $ventas = Venta::orderBy('created_at', 'desc')->paginate(6);
         $vendedores = Vendedor::all();
         $productos = Producto::all();
         $tiendas = Tienda::all();
@@ -118,6 +118,13 @@ class VentasController extends Controller
         $productosAJAX = Producto::all();
 
         return response()->json($productosAJAX);
+    }
+    public function showVendedores()
+    {
+        //
+        $vendedoresAJAX = Vendedor::all();
+
+        return response()->json($vendedoresAJAX);
     }
 
 
