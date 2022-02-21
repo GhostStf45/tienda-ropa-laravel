@@ -61,4 +61,5 @@ Route::put('/vendedores/actualizar/{id}',[VendedoresController::class, 'update']
   Route::get('/ventas',[VentasController::class, 'index'])->name('ventas.list');
   Route::post('/ventas/crear',[VentasController::class, 'store'])->name('ventas.store');
   Route::get('/ventas/leer/producto/{id}',[VentasController::class, 'show'])->name('ventas.show');
+  Route::get('/ventas/productos',[VentasController::class, 'showProductos'])->name('ventas.showProductos');
   // -------------------------------- ---------------------------------------------------------- //

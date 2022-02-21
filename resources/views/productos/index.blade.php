@@ -25,7 +25,7 @@
                                     <th>Codigo del producto</th>
                                     <th>Tipo de producto</th>
                                     <th>Marca del producto</th>
-                                    <th>Costo del producto</th>
+                                    <th>Costo del producto (S/.)</th>
                                     <th>Cantidad del producto</th>
                                     <th>Descripción del producto</th>
                                     <th>Acciones</th>
@@ -36,7 +36,7 @@
                                     <th>Codigo del producto</th>
                                     <th>Tipo de producto</th>
                                     <th>Marca del producto</th>
-                                    <th>Costo del producto</th>
+                                    <th>Costo del producto (S/.)</th>
                                     <th>Cantidad del producto</th>
                                     <th>Descripción del producto</th>
                                     <th>Acciones</th>
@@ -49,7 +49,15 @@
                                         <td>{{ $producto->tiposProductos->nombre_del_producto}}</td>
                                         <td>{{ $producto->marcas->nombre_marca}}</td>
                                         <td>{{ $producto->costo}}</td>
-                                        <td>{{ $producto->cantidad}}</td>
+                                        <td>
+                                            @if($producto->cantidad > 0)
+                                                {{ $producto->cantidad}}
+                                            @endif
+                                            @if($producto->cantidad <= 0)
+                                                <p class="badge bg-danger"> NO HAY STOCK </p>
+                                            @endif
+
+                                        </td>
                                         <td>{{ $producto->descripcion}}</td>
                                         <td>
                                             <a href="{{ route('productos.show', ['id' => $producto->id]) }}" class=" btn btn-primary my-1 mx-1 btn-sm">Editar</a>
@@ -60,7 +68,12 @@
                         </table>
                     </div>
                 </div>
+            <!--Pagination-->
+            <div id="pagination" class="mt-3 d-flex align-items-center justify-content-md-center col-md-12">
 
+                {{$productos->appends(request()->except('page'))->links()}}
+            </div>
+            <!--End pagination-->
         </div>
     </div>
     <div class="col-md-4">

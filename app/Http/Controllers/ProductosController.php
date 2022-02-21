@@ -20,7 +20,7 @@ class ProductosController extends Controller
     public function index()
     {
         //
-        $productos = Producto::all();
+        $productos = Producto::orderBy('created_at', 'desc')->paginate(6);
         $marcas = Marca::all();
         $tiposProducto = TipoRopa::all();
         return view('productos.index', [

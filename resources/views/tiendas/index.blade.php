@@ -26,7 +26,7 @@
                                     <th>Id</th>
                                     <th>Nombre de la tienda</th>
                                     <th>Descripcion</th>
-                                    <th>Alquiler</th>
+                                    <th>Alquiler (S/.)</th>
                                     <th width="45%">Acciones</th>
                                 </tr>
                             </thead>

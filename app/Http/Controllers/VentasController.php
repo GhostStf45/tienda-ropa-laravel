@@ -7,6 +7,7 @@ use App\Models\Producto;
 use App\Models\Tienda;
 use App\Models\Vendedor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
@@ -43,6 +44,7 @@ class VentasController extends Controller
     {
         //
 
+
     }
 
     /**
@@ -54,6 +56,47 @@ class VentasController extends Controller
     public function store(Request $request)
     {
         //
+        $validator = Validator::make($request->all(),[
+            'codigo_producto' => 'required',
+            'tienda' => 'required',
+            'vendedor' => 'required',
+            'cantidad_vender' => 'required|integer|min:0',
+            'precio_venta' => 'required|numeric|min:0|not_in:0',
+            'utilidad' => 'required|numeric|min:0',
+            'total' => 'required|numeric|min:0'
+        ]);
+
+        $codigo_producto = $request->input('codigo_producto');
+        $tienda = $request->input('tienda');
+        $vendedor = $request->input('vendedor');
+        $cantidad_vender = $request->input('cantidad_vender');
+        $precio_venta = $request->input('precio_venta');
+        $utilidad = $request->input('utilidad');
+        $total = $request->input('total');
+
+        if($validator->fails()){
+
+            return Redirect::back()->withErrors($validator);
+
+        }
+
+
+        $venta = new Venta();
+        $venta->codigo_producto_id= (int) $codigo_producto;
+        $venta->tienda_id= (int) $tienda;
+        $venta->vendedor_id= (int) $vendedor;
+        $venta->cantidad_vendida= (int) $cantidad_vender;
+        $venta->precio_de_venta= (float) $precio_venta;
+
+
+        $venta->utilidad= (float) $utilidad;
+        $venta->total= (float) $total;
+
+        $venta->save();
+        DB::table('productos')->decrement('cantidad', $cantidad_vender);
+
+        return redirect()->route('ventas.list')
+                ->with(['message'=>'Venta registrada correctamente']);
     }
 
     /**
@@ -69,6 +112,14 @@ class VentasController extends Controller
 
         return response()->json($productoAJAX);
     }
+    public function showProductos()
+    {
+        //
+        $productosAJAX = Producto::all();
+
+        return response()->json($productosAJAX);
+    }
+
 
     /**
      * Show the form for editing the specified resource.
