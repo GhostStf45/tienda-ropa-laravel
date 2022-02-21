@@ -18,7 +18,7 @@ class TiendasController extends Controller
     public function index()
     {
         //
-        $tiendas = Tienda::all();
+        $tiendas = Tienda::orderBy('nombre_tienda', 'asc')->paginate(6);;
         return view('tiendas.index',['tiendas' => $tiendas]);
     }
 
