@@ -51,6 +51,11 @@
                 </div>
 
         </div>
+         <!--Pagination-->
+         <div class="mt-3 d-flex align-items-center justify-content-md-center col-md-12">
+            {{$marcas->appends(request()->except('page'))->links()}}
+        </div>
+    <!--End pagination-->
     </div>
     <div class="col-md-4">
             <!-- DataTales Example -->

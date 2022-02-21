@@ -18,7 +18,7 @@ class VendedoresController extends Controller
     public function index()
     {
         //
-        $vendedores = Vendedor::all();
+        $vendedores = Vendedor::orderBy('nombre', 'asc')->paginate(6);
         return view('vendedores.index',['vendedores' => $vendedores]);
 
     }
@@ -50,7 +50,7 @@ class VendedoresController extends Controller
             'celular' => 'required|integer|between:100000000, 999999999',
             'fecha_nacimiento' => 'required|date',
             'direccion' => 'required',
-            'dni' => 'required|integer|between:10000000, 99999999',
+            'dni' => 'required|integer|between:10000000, 99999999|unique:vendedores,DNI',
         ]);
 
 
@@ -129,7 +129,7 @@ class VendedoresController extends Controller
             'celular' => 'required|integer|between:100000000, 999999999',
             'fecha_nacimiento' => 'required|date',
             'direccion' => 'required',
-            'dni' => 'required|integer|between:10000000, 99999999',
+            'dni' => 'required|integer|between:10000000, 99999999|unique:vendedores,DNI',
         ]);
 
 

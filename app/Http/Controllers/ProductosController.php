@@ -20,7 +20,7 @@ class ProductosController extends Controller
     public function index()
     {
         //
-        $productos = Producto::orderBy('created_at', 'desc')->paginate(6);
+        $productos = Producto::orderBy('codigo_producto', 'desc')->paginate(6);
         $marcas = Marca::all();
         $tiposProducto = TipoRopa::all();
         return view('productos.index', [
@@ -51,7 +51,7 @@ class ProductosController extends Controller
     {
 
         $validator = Validator::make($request->all(),[
-            'codigo_producto' => 'required',
+            'codigo_producto' => 'required|unique:productos,codigo_producto',
             'tipo_producto' => 'required',
             'marca' => 'required',
             'costo' => 'required|numeric|min:0|not_in:0',
@@ -129,7 +129,7 @@ class ProductosController extends Controller
         //
         $producto = Producto::find($id);
         $validator = Validator::make($request->all(),[
-            'codigo_producto' => 'required',
+            'codigo_producto' => 'required|unique:productos,codigo_producto',
             'tipo_producto' => 'required',
             'marca' => 'required',
             'costo' => 'required|numeric|min:0|not_in:0',

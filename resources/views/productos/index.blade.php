@@ -70,7 +70,6 @@
                 </div>
             <!--Pagination-->
             <div id="pagination" class="mt-3 d-flex align-items-center justify-content-md-center col-md-12">
-
                 {{$productos->appends(request()->except('page'))->links()}}
             </div>
             <!--End pagination-->

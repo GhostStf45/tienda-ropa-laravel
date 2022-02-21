@@ -17,7 +17,7 @@ class MarcasController extends Controller
     public function index()
     {
         //
-        $marcas = Marca::all();
+        $marcas = Marca::orderBy('nombre_marca', 'asc')->paginate(6);
         return view('marcas.index',['marcas' => $marcas]);
     }
 

@@ -32,7 +32,7 @@
                                     <th>Fecha de nacimiento</th>
                                     <th>Direccion</th>
                                     <th>Estado</th>
-                                    <th width="45%">Acciones</th>
+                                    <th width="10%">Acciones</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -78,6 +78,11 @@
                 </div>
 
         </div>
+         <!--Pagination-->
+            <div id="pagination" class="mt-3 d-flex align-items-center justify-content-md-center col-md-12">
+                {{$vendedores->appends(request()->except('page'))->links()}}
+            </div>
+        <!--End pagination-->
     </div>
     <div class="col-md-4">
             <!-- DataTales Example -->

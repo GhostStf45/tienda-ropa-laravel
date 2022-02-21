@@ -17,7 +17,7 @@ class TiposRopaController extends Controller
     public function index()
     {
         //
-        $tiposRopa = TipoRopa::all();
+        $tiposRopa = TipoRopa::orderBy('nombre_del_producto', 'asc')->paginate(6);
         return view('tipo_ropa.index', ['tiposRopa' => $tiposRopa]);
     }
 
