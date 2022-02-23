@@ -19,8 +19,8 @@ use App\Http\Controllers\VentasController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+Route::get('/',function(){
+    return view('mainpages.page');
 });
 
  // -------------------------------- Administracion de vendedores -------------------------------- //
@@ -29,7 +29,7 @@ Route::post('/vendedores/crear',[VendedoresController::class, 'store'])->name('v
 Route::get('/vendedores/leer/{id}',[VendedoresController::class, 'show'])->name('vendedores.show');
 Route::put('/vendedores/actualizar/{id}',[VendedoresController::class, 'update'])->name('vendedores.update');
 
-//#########################################################################################################
+//#################################################################################################
 
  // -------------------------------- Administracion de marcas -------------------------------- //
  Route::get('/marcas',[MarcasController::class, 'index'])->name('marcas.list');
@@ -63,4 +63,5 @@ Route::put('/vendedores/actualizar/{id}',[VendedoresController::class, 'update']
   Route::get('/ventas/leer/producto/{id}',[VentasController::class, 'show'])->name('ventas.show');
   Route::get('/ventas/productos',[VentasController::class, 'showProductos'])->name('ventas.showProductos');
   Route::get('/ventas/vendedores',[VentasController::class, 'showVendedores'])->name('ventas.showVendedores');
-  // -------------------------------- ---------------------------------------------------------- //
+
+  // -------------------------------------------------------------------------------------------- //

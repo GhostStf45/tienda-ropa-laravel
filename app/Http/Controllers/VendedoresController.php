@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
+use \Illuminate\Validation\Rule;
 
 class VendedoresController extends Controller
 {
@@ -77,7 +78,8 @@ class VendedoresController extends Controller
         $vendedor->DNI = $DNI;
         $vendedor->save();
 
-        return redirect()->route('vendedores.list');
+        return redirect()->route('vendedores.list')
+                ->with(['message'=>'Vendedor registrado correctamente']);
 
 
 
@@ -129,7 +131,7 @@ class VendedoresController extends Controller
             'celular' => 'required|integer|between:100000000, 999999999',
             'fecha_nacimiento' => 'required|date',
             'direccion' => 'required',
-            'dni' => 'required|integer|between:10000000, 99999999|unique:vendedores,DNI',
+            'dni' => 'required|integer|between:10000000, 99999999|unique:vendedores,DNI,'.$vendedor->id,
         ]);
 
 

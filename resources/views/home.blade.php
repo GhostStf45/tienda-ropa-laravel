@@ -29,7 +29,7 @@
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/')}}">
                     <div class="sidebar-brand-text mx-3">Sistema de ventas de ropa</div>
                 </a>
 
