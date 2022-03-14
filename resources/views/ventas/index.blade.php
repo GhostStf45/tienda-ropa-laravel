@@ -259,7 +259,6 @@ $(document).ready(function () {
     var stock_actual = parseInt($('.cantidad_elegida').val());
 
 
-
     $('#codigo_producto').change(function(){
         var id = $(this).find("option:selected").val();
             $.ajax({

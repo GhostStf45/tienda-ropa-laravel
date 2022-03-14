@@ -38,7 +38,7 @@
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="{{ route('dashboard.principal')}}">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Dashboard</span></a>
                 </li>
@@ -85,6 +85,12 @@
                         <i class="fas fa-briefcase"></i>
                         <span>Ventas</span></a>
                 </li>
+                <!-- Nav Item - Tables -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('pagos.list') }}">
+                        <i class=" fas fa-file-invoice-dollar"></i>
+                        <span>Pagos</span></a>
+                </li>
 
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
@@ -109,6 +115,11 @@
          <!-- Bootstrap core JavaScript-->
 
          <script src="{{ mix('/js/app.js') }}"></script>
+         <script src="{{ asset('/js/chart/chart.min.js') }}"></script>
+         <script src="{{ asset('/js/demo/chart-area-demo.js') }}"></script>
+         <script src="{{ asset('/js/demo/chart-bar-demo.js') }}"></script>
+         <script src="{{ asset('/js/demo/chart-pie-demo.js') }}"></script>
+         <script src="{{ asset('/js/demo/chart-datatables-demo.js') }}"></script>
         <script src="{{ asset ('js/jquery.min.js')}}"></script>
         <script src="{{ asset ('js/bootstrap.bundle.min.js')}}"></script>
 

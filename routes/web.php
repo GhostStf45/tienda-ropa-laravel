@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MarcasController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\TiendasController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\TiposRopaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendedoresController;
 use App\Http\Controllers\VentasController;
+use App\Http\Controllers\PagosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,9 @@ Route::get('/',function(){
     return view('mainpages.page');
 });
 
+ // -------------------------------- Dashboard -------------------------------- //
+ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.principal');
+ Route::get('/dashboard/empleados', [DashboardController::class, 'getSellsByEmployeeEachMonth'])->name('dashboard.empleados');
  // -------------------------------- Administracion de vendedores -------------------------------- //
 Route::get('/vendedores',[VendedoresController::class, 'index'])->name('vendedores.list');
 Route::post('/vendedores/crear',[VendedoresController::class, 'store'])->name('vendedores.store');
@@ -65,3 +70,11 @@ Route::put('/vendedores/actualizar/{id}',[VendedoresController::class, 'update']
   Route::get('/ventas/vendedores',[VentasController::class, 'showVendedores'])->name('ventas.showVendedores');
 
   // -------------------------------------------------------------------------------------------- //
+
+    // -------------------------------- Administracion de pagos -------------------------------- //
+    Route::get('/pagos',[PagosController::class, 'index'])->name('pagos.list');
+    Route::post('/pagos/crear',[PagosController::class, 'store'])->name('pagos.store');
+    Route::get('/pagos/leer/{id}',[PagosController::class, 'show'])->name('pagos.show');
+    Route::put('/pagos/actualizar/{id}',[PagosController::class, 'update'])->name('pagos.update');
+
+    // -------------------------------------------------------------------------------------------- //
