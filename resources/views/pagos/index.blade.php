@@ -87,6 +87,18 @@
                     <form action="{{url('/pagos/crear')}}" method="post" class="row">
                         @csrf <!-- {{ csrf_field() }} -->
                         <div class="mb-3">
+                            <label class="form-label">Tienda</label>
+                            <select  name="tienda" class="form-control @error('tienda') is-invalid @enderror" id="tienda">
+                                <option>Seleccionar tienda</option>
+                                 @foreach($tiendas as $tienda)
+                                 <option value="{{ $tienda->id }}">{{ $tienda->nombre_tienda}}</option>
+                                 @endforeach
+                              </select>
+                              @error('tienda')
+                              <div class="text-danger">{{ $message }}</div>
+                          @enderror
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label">Nombre del pago</label>
                             <input type="text" class="form-control" id="nombre_pago" name="nombre_pago"  @error('nombre_pago') is-invalid @enderror />
                             @error('nombre_pago')
@@ -134,18 +146,6 @@
                             @error('fecha-anio')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Tienda</label>
-                            <select  name="tienda" class="form-control @error('tienda') is-invalid @enderror" id="tienda">
-                                <option>Seleccionar tienda</option>
-                                 @foreach($tiendas as $tienda)
-                                 <option value="{{ $tienda->id }}">{{ $tienda->nombre_tienda}}</option>
-                                 @endforeach
-                              </select>
-                              @error('tienda')
-                              <div class="text-danger">{{ $message }}</div>
-                          @enderror
                         </div>
                         <div class="modal-footer d-block">
                             <button type="submit" id="#ajaxSubmit" class="btn btn-block btn-primary float-end">Enviar</button>
