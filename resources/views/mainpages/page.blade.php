@@ -7,7 +7,7 @@
 </div>
 
 <div class="row">
-    <div class="col-xl-4 col-md-6 mb-4">
+    <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-4 col-md-6 mb-4">
+    <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-warning shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -41,7 +41,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-4 col-md-6 mb-4">
+    <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-success shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -54,6 +54,23 @@
                         <i class="fas fas fa-building fa-2x"></i>
                     </div>
                     <a href="{{ route('tiendas.list') }}" class="btn btn-success my-3">Ir a la pagina.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-dark shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                           Pagos </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Administrar Pagos</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-coins fa-2x"></i>
+                    </div>
+                    <a href="{{ route('pagos.list') }}" class="btn btn-dark my-3">Ir a la pagina.</a>
                 </div>
             </div>
         </div>
