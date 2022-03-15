@@ -57,13 +57,17 @@ class VentasController extends Controller
     {
         //
         $validator = Validator::make($request->all(),[
-            'codigo_producto' => 'required',
-            'tienda' => 'required',
-            'vendedor' => 'required',
+            'codigo_producto' => 'required|integer',
+            'tienda' => 'required|integer',
+            'vendedor' => 'required|integer',
             'cantidad_vender' => 'required|integer|min:0',
             'precio_venta' => 'required|numeric|min:0|not_in:0',
             'utilidad' => 'required|numeric|min:0',
             'total' => 'required|numeric|min:0'
+        ],[
+            'codigo_producto.integer' => 'Debe de seleccionar el codigo del producto',
+            'tienda.integer' => 'Debe de seleccionar la tienda',
+            'vendedor.integer' => 'Debe de seleccionar el vendedor'
         ]);
 
         $codigo_producto = $request->input('codigo_producto');
@@ -93,7 +97,7 @@ class VentasController extends Controller
         $venta->total= (float) $total;
 
         $venta->save();
-        DB::table('productos')->decrement('cantidad', $cantidad_vender);
+        Producto::find($codigo_producto)->decrement('cantidad',$cantidad_vender );
 
         return redirect()->route('ventas.list')
                 ->with(['message'=>'Venta registrada correctamente']);

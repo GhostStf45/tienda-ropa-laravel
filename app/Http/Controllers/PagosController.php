@@ -20,7 +20,7 @@ class PagosController extends Controller
     public function index()
     {
         //
-        $pagos = Pago::all();
+        $pagos = Pago::orderBy('id', 'asc')->paginate(6);
         $tiendas = Tienda::all();
 
         return view('pagos.index',[
@@ -56,7 +56,9 @@ class PagosController extends Controller
             'pago_servicios' => 'required|numeric|min:0|not_in:0',
             'fecha' => 'date_format:m',
             'fecha-anio' => 'date_format:Y',
-            'tienda' => 'required',
+            'tienda' => 'required|integer',
+        ],[
+            'tienda.integer' => 'Debe de seleccionar la tienda',
         ]);
 
 
@@ -137,7 +139,9 @@ class PagosController extends Controller
             'pago_servicios' => 'required|numeric|min:0|not_in:0',
             'fecha' => 'date_format:m',
             'fecha-anio' => 'date_format:Y',
-            'tienda' => 'required',
+            'tienda' => 'required|integer',
+        ],[
+            'tienda.integer' => 'Debe de seleccionar la tienda',
         ]);
 
 

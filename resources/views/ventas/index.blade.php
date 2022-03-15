@@ -104,6 +104,9 @@
                                     </option>
                                      @endforeach
                                   </select>
+                                @error('codigo_producto')
+                                  <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Tienda</label>
@@ -113,6 +116,9 @@
                                      <option value="{{ $tienda->id }}">{{ $tienda->nombre_tienda }}</option>
                                      @endforeach
                                   </select>
+                                  @error('tienda')
+                                  <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Vendedores</label>
@@ -121,7 +127,10 @@
                                      @foreach($vendedores as $vendedor)
                                      <option value="{{ $vendedor->id }}">{{ $vendedor->nombre }} {{ $vendedor->apellido }}</option>
                                      @endforeach
-                                  </select>
+                                </select>
+                                @error('vendedor')
+                                <div class="text-danger">{{ $message }}</div>
+                              @enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Cantidad a vender</label>

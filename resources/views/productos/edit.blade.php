@@ -27,6 +27,9 @@
                                 <option value="{{ $tipoProducto->id }}" {{$producto->tipo_producto_id == $tipoProducto->id  ? 'selected' : ''}}>{{ $tipoProducto->nombre_del_producto }}</option>
                              @endforeach
                           </select>
+                          @error('tipo_producto')
+                          <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-12 mb-3">
                         <label class="form-label">Marcas</label>
@@ -36,6 +39,9 @@
                                 <option value="{{ $marca->id }}" {{$producto->marca_id == $marca->id  ? 'selected' : ''}}>{{ $marca->nombre_marca }}</option>
                              @endforeach
                           </select>
+                        @error('marca')
+                          <div class="text-danger">{{ $message }}</div>
+                        @enderror
 
                     </div>
                     <div class="mb-3">

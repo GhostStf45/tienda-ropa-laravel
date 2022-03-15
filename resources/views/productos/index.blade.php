@@ -98,7 +98,10 @@
                                  @foreach($tiposProducto as $tipoProducto)
                                  <option value="{{ $tipoProducto->id }}">{{ $tipoProducto->nombre_del_producto }}</option>
                                  @endforeach
-                              </select>
+                            </select>
+                            @error('tipo_producto')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
@@ -109,6 +112,9 @@
                                  <option value="{{ $marca->id }}">{{ $marca->nombre_marca }}</option>
                                  @endforeach
                               </select>
+                              @error('marca')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="mb-3">

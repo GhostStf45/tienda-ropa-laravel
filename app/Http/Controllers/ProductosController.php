@@ -52,11 +52,14 @@ class ProductosController extends Controller
 
         $validator = Validator::make($request->all(),[
             'codigo_producto' => 'required|unique:productos,codigo_producto',
-            'tipo_producto' => 'required',
-            'marca' => 'required',
+            'tipo_producto' => 'required|integer',
+            'marca' => 'required|integer',
             'costo' => 'required|numeric|min:0|not_in:0',
             'cantidad' => 'required|integer|min:1',
             'descripcion' => 'required'
+        ],[
+            'tipo_producto.integer' => 'Debe de seleccionar el tipo del producto',
+            'marca.integer' => 'Debe de seleccionar la marca del producto'
         ]);
 
         $codigo_producto = $request->input('codigo_producto');
@@ -130,11 +133,14 @@ class ProductosController extends Controller
         $producto = Producto::find($id);
         $validator = Validator::make($request->all(),[
             'codigo_producto' => 'required|unique:productos,codigo_producto,'.$producto->id,
-            'tipo_producto' => 'required',
-            'marca' => 'required',
+            'tipo_producto' => 'required|integer',
+            'marca' => 'required|integer',
             'costo' => 'required|numeric|min:0|not_in:0',
             'nueva_cantidad' => 'integer|min:0',
             'descripcion' => 'required'
+        ],[
+            'tipo_producto.integer' => 'Debe de seleccionar el tipo del producto',
+            'marca.integer' => 'Debe de seleccionar la marca del producto'
         ]);
         $codigo_producto = $request->input('codigo_producto');
         $tipo_producto = $request->input('tipo_producto');

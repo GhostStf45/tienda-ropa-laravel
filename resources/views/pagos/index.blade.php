@@ -72,9 +72,9 @@
 
         </div>
          <!--Pagination-->
-         {{-- <div class="mt-3 d-flex align-items-center justify-content-md-center col-md-12">
-            {{$marcas->appends(request()->except('page'))->links()}}
-        </div> --}}
+         <div class="mt-3 d-flex align-items-center justify-content-md-center col-md-12">
+            {{$pagos->appends(request()->except('page'))->links()}}
+        </div>
     <!--End pagination-->
     </div>
     <div class="col-md-4">
@@ -143,6 +143,9 @@
                                  <option value="{{ $tienda->id }}">{{ $tienda->nombre_tienda}}</option>
                                  @endforeach
                               </select>
+                              @error('tienda')
+                              <div class="text-danger">{{ $message }}</div>
+                          @enderror
                         </div>
                         <div class="modal-footer d-block">
                             <button type="submit" id="#ajaxSubmit" class="btn btn-block btn-primary float-end">Enviar</button>
